@@ -29,7 +29,7 @@ def lambda_handler(event, context):
     result = []
     if labels[1] == 'None':
         # we only have one label.
-        result = query(labels[0])
+        # result = query(labels[0])
         print("go from here.")
     else:
         # we have two labels.
