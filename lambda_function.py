@@ -45,7 +45,8 @@ def lambda_handler(event, context):
     # next step is return some urls. and the front end will receive
     return {
         'statusCode': 200,
-        'body': json.dumps(result)
+        'body': json.dumps(result),
+        'results':"https://baidu.com"
     }
 
 
