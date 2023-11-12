@@ -42,9 +42,11 @@ def lambda_handler(event, context):
     
     print(result)
     # from the result, get the object key and bucket_name, and make them as one url. response to frontend then.
-    
-    
     # next step is return some urls. and the front end will receive
+    return {
+        'statusCode': 200,
+        'body': json.dumps(result)
+    }
 
 
 
