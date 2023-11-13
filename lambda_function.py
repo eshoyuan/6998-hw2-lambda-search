@@ -13,7 +13,7 @@ client = boto3.client('lexv2-runtime')
 def lambda_handler(event, context):
     # msg_from_user = event['messages'][0]['unstructured']['text']
     print(event)
-    
+    urls = []
     # delete_all_queries()
     msg_from_user = event["queryStringParameters"]["q"]
     response = client.recognize_text(
@@ -26,7 +26,7 @@ def lambda_handler(event, context):
     if msg_from_lex is None:
         return {
         'statusCode': 200,
-        'body': [],
+        'body': json.dumps(urls),
         "headers": {
                 "Content-Type": 'application/json',
                 "Access-Control-Allow-Headers": '*',
@@ -54,7 +54,6 @@ def lambda_handler(event, context):
     print(result)
     # from the result, get the object key and bucket_name, and make them as one url. response to frontend then.
     # next step is return some urls. and the front end will receive
-    urls = []
     for r in result:
         url = "https://"
         url = url + r['bucket']
