@@ -7,7 +7,7 @@ from botocore.exceptions import ClientError
 REGION = 'us-east-1'
 # HOST = 'search-photos-dhul7pceqzrodplgllu4qk25jy.us-east-1.es.amazonaws.com/'
 Host = 'search-photos1-sxipfgbn7hxqx3ibsnr3lvxany.us-east-1.es.amazonaws.com/'
-INDEX = 'photos111'
+INDEX = 'photos11111'
 es_client = boto3.client('opensearch')
 client = boto3.client('lexv2-runtime')
 def lambda_handler(event, context):
