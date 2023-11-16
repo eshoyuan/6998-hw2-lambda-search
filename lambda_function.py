@@ -3,6 +3,7 @@ import boto3
 from opensearchpy import OpenSearch, RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
 from botocore.exceptions import ClientError
+import inflection
 
 REGION = 'us-east-1'
 # HOST = 'search-photos-dhul7pceqzrodplgllu4qk25jy.us-east-1.es.amazonaws.com/'
@@ -40,12 +41,12 @@ def lambda_handler(event, context):
     result = []
     if labels[1] == 'None':
         # we only have one label.
-        result = query(labels[0])
+        result = query(inflection.singularize((labels[0])))
         print("go from here.")
     else:
         # we have two labels.
-        result_1 = query(labels[0])
-        result_2 = query(labels[1])
+        result_1 = query(inflection.singularize((labels[0])))
+        result_2 = query(inflection.singularize((labels[1])))
         for r in result_2:
             if r not in result_1:
                 result_1.append(r)
